@@ -17,10 +17,15 @@ h6 {
 	margin: 10px 0px;
 }
 
-#sprite-sheet {
-	width: 600px;
-	height: 500px;
+.section {
+	margin: 40px 0;
+}
+button, input{
+	margin-bottom: 20px;
+}
 
+#sprite-sheet:has(img) {
+	width: 600px;
 }
 
 img[alt="sprite-sheet"] {

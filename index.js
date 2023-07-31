@@ -3,9 +3,10 @@ let fileUploaderInput;
 let generateSpriteSheetButton;
 let spritePreview;
 let spriteSheetContainer;
-let spriteSheetDownloadButton; 
+let spriteSheetDownloadButton;
 let loadedImages = [];
 let generatedSpriteSheet;
+let cssCode;
 
 window.onload = () => {
     fileUploaderInput = document.getElementById('fileUploaderInput');
@@ -13,7 +14,7 @@ window.onload = () => {
     spritePreview = document.getElementById('sprite-preview');
     spriteSheetContainer = document.getElementById('sprite-sheet');
     spriteSheetDownloadButton = document.getElementById('spriteSheetDownloadButton');
-
+    cssCode = document.getElementById('cssCode');
     generateSpriteSheetButton.addEventListener('click', (event) => createSpriteSheet(loadedImages))
     spriteSheetDownloadButton.addEventListener('click', (event) => downloadSprite())
     if (fileUploaderInput) {
@@ -95,6 +96,7 @@ const createSpriteSheet = (images) => {
           width: ${image.width}px;
           height: ${image.height}px;
         }
+        <br>
       `;
         x += image.width;
         if (x >= spriteWidth) {
@@ -108,6 +110,8 @@ const createSpriteSheet = (images) => {
     newImage.alt = 'sprite-sheet';
     spriteSheetContainer.appendChild(newImage);
     generatedSpriteSheet = newImage
+
+    cssCode.innerHTML = cssStyles;
 }
 
 const downloadSprite = () => {
